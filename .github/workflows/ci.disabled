@@ -1,0 +1,26 @@
+# name: CI
+
+# on:
+#   push:
+#     branches:
+#       - main
+      
+# jobs:
+#   ci:
+#     name: CI
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
+
+#       - name: Refresh module hashsums
+#         run: make tidy
+#       - name: Build
+#         run: make build
+#         env:
+#           VERSION: latest
+
+#       - name: Test
+#         run: make test
+#       - name: Lint
+#         run: make lint
