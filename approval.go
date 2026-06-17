@@ -150,9 +150,9 @@ func (a *approvalEnvironment) SetActionOutputs(outputs map[string]string) (bool,
 		return false, err
 	}
 
-    defer func() {
-        _ = f.Close() // Error explicitly ignored as there is nothing to handle if file close fails.
-    }()
+	defer func() {
+		_ = f.Close() // Error explicitly ignored as there is nothing to handle if file close fails.
+	}()
 
 	var pairs []string
 
@@ -308,10 +308,10 @@ func splitLongString(input string) []string {
 	currentLength := 0
 
 	for i, line := range lines {
-    lineLength := len(line)
+		lineLength := len(line)
 		if i < len(lines)-1 {
 			lineLength++
-    }
+		}
 
 		if currentLength+lineLength > maxLength {
 			if currentChunk.Len() > 0 {
@@ -344,4 +344,3 @@ func splitLongString(input string) []string {
 	}
 	return result
 }
-
