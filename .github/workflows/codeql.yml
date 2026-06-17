@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   CodeQL-Build:
-    if: github.repository == 'trstringer/manual-approval'
+    if: github.repository == 'tech-55/tech55-infra-git-manual-approval'
     permissions:
       actions: read
       contents: read
