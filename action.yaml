@@ -57,4 +57,4 @@ outputs:
     description: The status of the approval ("approved" or "denied")
 runs:
   using: docker
-  image: docker://ghcr.io/tech-55/tech55-infra-git-manual-approval:v1.0.0
+  image: docker://ghcr.io/tech-55/tech55-infra-git-manual-approval:main
