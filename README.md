@@ -1,7 +1,7 @@
 
 # Manual Workflow Approval
 
-[![ci](https://github.com/trstringer/manual-approval/actions/workflows/ci.yaml/badge.svg)](https://github.com/trstringer/manual-approval/actions/workflows/ci.yaml)
+[![ci](https://github.com/tech-55/tech55-infra-git-manual-approval/actions/workflows/ci.yaml/badge.svg)](https://github.com/tech-55/tech55-infra-git-manual-approval/actions/workflows/ci.yaml)
 
 Pause a GitHub Actions workflow and require manual approval from one or more approvers before continuing.
 
@@ -42,7 +42,7 @@ Starting from v1.10.0, the behaviour for issue contents has changed:
 
 ```yaml
 steps:
-  - uses: trstringer/manual-approval@v1
+  - uses: tech-55/tech55-infra-git-manual-approval@v1
     with:
       secret: ${{ github.TOKEN }}
       approvers: user1,user2,org-team1
@@ -88,7 +88,7 @@ The file method works unless the file itself is so big that after breaking it in
 
 ```yaml
 steps:
-  - uses: trstringer/manual-approval@v1
+  - uses: tech-55/tech55-infra-git-manual-approval@v1
     with:
       secret: ${{ github.TOKEN }}
       approvers: user1,user2,org-team1
@@ -128,7 +128,7 @@ jobs:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
       - name: Wait for approval
-        uses: trstringer/manual-approval@v1
+        uses: tech-55/tech55-infra-git-manual-approval@v1
         with:
           secret: ${{ steps.generate_token.outputs.token }}
           approvers: myteam
@@ -152,7 +152,7 @@ For instance, if you want your manual approval step to timeout after an hour, yo
 jobs:
   approval:
     steps:
-      - uses: trstringer/manual-approval@v1
+      - uses: tech-55/tech55-infra-git-manual-approval@v1
         timeout-minutes: 60
     ...
 ```
@@ -162,7 +162,7 @@ jobs:
   approval:
     timeout-minutes: 10
     steps:
-      - uses: trstringer/manual-approval@v1
+      - uses: tech-55/tech55-infra-git-manual-approval@v1
 
 ```
 
@@ -193,13 +193,13 @@ For more information on permissions, please look at the [GitHub documentation](h
 To test out your code in an action, you need to build the image and push it to a different container registry repository. For instance, if I want to test some code, I won't build the image with the main image repository. Prior to this, comment out the label binding the image to a repo:
 
 ```dockerfile
-# LABEL org.opencontainers.image.source https://github.com/trstringer/manual-approval
+# LABEL org.opencontainers.image.source https://github.com/tech-55/tech55-infra-git-manual-approval
 ```
 
 Build the image:
 
 ```shell
-VERSION=1.7.1-rc.1 make IMAGE_REPO=ghcr.io/trstringer/manual-approval-test build
+VERSION=1.7.1-rc.1 make IMAGE_REPO=ghcr.io/tech-55/tech55-infra-git-manual-approval-test build
 ```
 
 *Note: The image version can be whatever you want, as this image wouldn't be pushed to production. It is only for testing.*
@@ -207,13 +207,13 @@ VERSION=1.7.1-rc.1 make IMAGE_REPO=ghcr.io/trstringer/manual-approval-test build
 Push the image to your container registry:
 
 ```shell
-VERSION=1.7.1-rc.1 make IMAGE_REPO=ghcr.io/trstringer/manual-approval-test push
+VERSION=1.7.1-rc.1 make IMAGE_REPO=ghcr.io/tech-55/tech55-infra-git-manual-approval-test push
 ```
 
 To test out the image, you will need to modify `action.yaml` so that it points to your new image that you're testing:
 
 ```yaml
-  image: docker://ghcr.io/trstringer/manual-approval-test:1.7.0-rc.1
+  image: docker://ghcr.io/tech-55/tech55-infra-git-manual-approval-test:1.7.0-rc.1
 ```
 
 Then, to test out the image, run a workflow specifying your dev branch:
