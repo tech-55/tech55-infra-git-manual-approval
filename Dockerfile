@@ -4,6 +4,7 @@ WORKDIR /var/app
 RUN go mod tidy
 RUN CGO_ENABLED=0 go build -o app .
 
+
 FROM alpine:3.23
 LABEL org.opencontainers.image.source=https://github.com/tech-55/tech55-infra-git-manual-approval
 RUN apk update && apk add ca-certificates
