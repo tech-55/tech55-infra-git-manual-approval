@@ -239,3 +239,8 @@ For `uses`, this should point to your repo and dev branch.
 5. Delete the `v1` tag locally and remotely: `$ git tag -d v1 && git push --delete origin v1`.
 6. Create and push new tags: `$ git tag v1.7.0 && git tag v1 && git push origin --tags`.
 7. Create the GitHub project release.
+
+
+## Documentation
+
+- [Architecture and operational flow](docs/architecture.md)
